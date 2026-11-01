@@ -166,7 +166,17 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             "الوقت الحالي هو " + Calendar.getInstance().time.toString()
         } else {
             "لقد قلت: $command. أنا أسمعك بوضوح."
-        }
+        }// أضف هذا الجزء ضمن دالة معالجة الأوامر (processCommand)
+else if (command.contains("روح") || command.contains("اروح") || command.contains("تريّح")) {
+    val reply = "حطيتك في عيني، راني رايح للخلفية. نعيطلك كي تحتاجني!"
+    tvResponse.append("\nسلطان: $reply")
+    speak(reply)
+    
+    // أمر إرسال التطبيق للخلفية (إخفاء الواجهة دون غلقه نهائياً ليظل مستعداً)
+    moveTaskToBack(true)
+}
+
+
         
         tvResponse.append("\nسلطان: $reply")
         speak(reply)
